@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Client | Скачать</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Эффект частиц */
+        .particle {
+            position: absolute;
+            background: rgba(0, 150, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Основной контейнер */
+        .container {
+            background: rgba(15, 15, 20, 0.95);
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 100, 255, 0.15);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Логотип и заголовок */
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00a8ff, #0097e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .version {
+            color: #888;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* Описание */
+        .description {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        /* Кнопки */
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: block;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00a8ff, #0097e6);
+            color: white;
+            box-shadow: 0 5px 20px rgba(0, 168, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 168, 255, 0.4);
+            background: linear-gradient(135deg, #0097e6, #0088cc);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(100, 150, 255, 0.3);
+        }
+
+        /* Инструкция */
+        .instructions {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            border-left: 3px solid #00a8ff;
+            margin-top: 30px;
+        }
+
+        .instructions h3 {
+            color: #00a8ff;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .step {
+            margin: 12px 0;
+            padding-left: 24px;
+            position: relative;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .step:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #00a8ff;
+            font-weight: bold;
+        }
+
+        .code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 5px 0;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #00ff88;
+            font-size: 0.9rem;
+        }
+
+        /* Футер */
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                font-size: 2.3rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+                padding: 0;
+            }
+            
+            .btn {
+                padding: 16px 25px;
+                font-size: 1rem;
+            }
+            
+            .instructions {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1 class="logo">Delta Client</h1>
+            <div class="version">Поддержка версии Minecraft 1.16.5 (Forge)</div>
+        </div>
+
+        <!-- Описание -->
+        <p class="description">
+            Лучший клиент для игры в Minecraft с улучшенной производительностью, 
+            большим выбором модификаций и удобным интерфейсом
+        </p>
+
+        <!-- Кнопки -->
+        <div class="buttons">
+            <a href="https://www.dropbox.com/t/qWJdrnLEHKMZ3Ldp" 
+               class="btn btn-primary" 
+               target="_blank"
+               onclick="trackDownload()">
+                Скачать Delta Client
+            </a>
+            
+            <a href="#" 
+               class="btn btn-secondary" 
+               id="mirrorBtn">
+                Зеркало
+            </a>
+        </div>
+
+        <!-- Инструкция -->
+        <div class="instructions">
+            <h3>📋 Инструкция по установке:</h3>
+            
+            <div class="step">
+                <strong>1. Распакуйте архив</strong><br>
+                Скачанный ZIP файл распакуйте в любую папку
+            </div>
+            
+            <div class="step">
+                <strong>2. Запустите клиент</strong><br>
+                Найдите и запустите файл <span class="code">start.exe</span>
+            </div>
+            
+            <div class="step">
+                <strong>3. Установка ресурспаков</strong><br>
+                Ресурспаки добавляйте в папку <span class="code">resourcepack</span>
+            </div>
+            
+            <div class="step">
+                <strong>4. Настройка конфигов</strong><br>
+                Конфиги закидывайте в папку <span class="code">cfg</span><br>
+                Для активации на сервере введите: <span class="code">.cfg load название</span>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <div class="footer">
+            <p>© 2024 Delta Client | Версия 2.4.1 | Все права защищены</p>
+            <p style="margin-top: 8px; font-size: 0.8rem;">
+                Поддержка: @DeltaClientSupport
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Создаем эффект частиц
+        function createParticles() {
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 100 + 50;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const opacity = Math.random() * 0.05 + 0.02;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = left + 'vw';
+                particle.style.top = top + 'vh';
+                particle.style.opacity = opacity;
+                
+                document.body.appendChild(particle);
+            }
+        }
+
+        // Обработка кнопок
+        function setupButtons() {
+            const mirrorBtn = document.getElementById('mirrorBtn');
+            
+            // Зеркало
+            mirrorBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const mirrors = [
+                    'https://www.dropbox.com/t/qWJdrnLEHKMZ3Ldp',
+                    'https://drive.google.com/file/d/ваша_ссылка_здесь',
+                    'https://mega.nz/ваша_ссылка_здесь'
+                ];
+                
+                const currentMirror = mirrors[0];
+                const confirmMirror = confirm(
+                    'Открыть зеркальную ссылку на Dropbox?\n\n' +
+                    'Если основная ссылка не работает, попробуйте эту.'
+                );
+                
+                if (confirmMirror) {
+                    window.open(currentMirror, '_blank');
+                }
+            });
+            
+            // Отслеживание скачивания
+            window.trackDownload = function() {
+                // Можно добавить счетчик скачиваний
+                console.log('Delta Client скачан');
+                
+                // Показываем сообщение через 1 секунду
+                setTimeout(() => {
+                    alert('✅ Скачивание начато!\n\n' +
+                          'Откроется страница Dropbox. Нажмите "Скачать" для загрузки файла.');
+                }, 500);
+            };
+        }
+
+        // Анимация появления
+        function animateEntrance() {
+            const container = document.querySelector('.container');
+            
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(30px) scale(0.95)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0) scale(1)';
+            }, 300);
+        }
+
+        // Запуск при загрузке
+        window.onload = function() {
+            createParticles();
+            setupButtons();
+            animateEntrance();
+            
+            // Автоматический фокус для мобильных
+            if (window.innerWidth < 768) {
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+            
+            // Информация в консоль
+            console.log('=== Delta Client Download Page ===');
+            console.log('Версия: 2.4.1 | Minecraft: 1.16.5 Forge');
+            console.log('Dropbox: https://www.dropbox.com/t/qWJdrnLEHKMZ3Ldp');
+        };
+    </script>
+</body>
+</html>
