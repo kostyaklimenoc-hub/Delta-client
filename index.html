@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* Эффект частиц */
         .particle {
             position: absolute;
             background: rgba(0, 150, 255, 0.1);
@@ -32,7 +31,6 @@
             pointer-events: none;
         }
 
-        /* Основной контейнер */
         .container {
             background: rgba(15, 15, 20, 0.95);
             border: 1px solid rgba(100, 150, 255, 0.2);
@@ -47,7 +45,6 @@
             z-index: 10;
         }
 
-        /* Логотип и заголовок */
         .header {
             margin-bottom: 40px;
         }
@@ -70,7 +67,6 @@
             font-weight: 500;
         }
 
-        /* Описание */
         .description {
             color: #ccc;
             font-size: 1.1rem;
@@ -79,7 +75,6 @@
             padding: 0 10px;
         }
 
-        /* Кнопки */
         .buttons {
             display: flex;
             flex-direction: column;
@@ -123,7 +118,6 @@
             border-color: rgba(100, 150, 255, 0.3);
         }
 
-        /* Инструкция */
         .instructions {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
@@ -168,7 +162,6 @@
             font-size: 0.9rem;
         }
 
-        /* Футер */
         .footer {
             margin-top: 30px;
             padding-top: 20px;
@@ -177,7 +170,6 @@
             color: #888;
         }
 
-        /* Адаптивность */
         @media (max-width: 600px) {
             .container {
                 padding: 30px 20px;
@@ -205,19 +197,16 @@
 </head>
 <body>
     <div class="container">
-        <!-- Заголовок -->
         <div class="header">
             <h1 class="logo">Delta Client</h1>
             <div class="version">Поддержка версии Minecraft 1.16.5 (Forge)</div>
         </div>
 
-        <!-- Описание -->
         <p class="description">
             Лучший клиент для игры в Minecraft с улучшенной производительностью, 
             большим выбором модификаций и удобным интерфейсом
         </p>
 
-        <!-- Кнопки -->
         <div class="buttons">
             <a href="https://www.dropbox.com/t/qWJdrnLEHKMZ3Ldp" 
                class="btn btn-primary" 
@@ -233,7 +222,6 @@
             </a>
         </div>
 
-        <!-- Инструкция -->
         <div class="instructions">
             <h3>📋 Инструкция по установке:</h3>
             
@@ -259,7 +247,6 @@
             </div>
         </div>
 
-        <!-- Футер -->
         <div class="footer">
             <p>© 2024 Delta Client | Версия 2.4.1 | Все права защищены</p>
             <p style="margin-top: 8px; font-size: 0.8rem;">
@@ -269,7 +256,6 @@
     </div>
 
     <script>
-        // Создаем эффект частиц
         function createParticles() {
             const particleCount = 20;
             
@@ -292,21 +278,13 @@
             }
         }
 
-        // Обработка кнопок
         function setupButtons() {
             const mirrorBtn = document.getElementById('mirrorBtn');
             
-            // Зеркало
             mirrorBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                const mirrors = [
-                    'https://www.dropbox.com/t/qWJdrnLEHKMZ3Ldp',
-                    'https://drive.google.com/file/d/ваша_ссылка_здесь',
-                    'https://mega.nz/ваша_ссылка_здесь'
-                ];
-                
-                const currentMirror = mirrors[0];
+                const currentMirror = 'https://www.dropbox.com/t/qWJdrnLEHKMZ3Ldp';
                 const confirmMirror = confirm(
                     'Открыть зеркальную ссылку на Dropbox?\n\n' +
                     'Если основная ссылка не работает, попробуйте эту.'
@@ -317,12 +295,9 @@
                 }
             });
             
-            // Отслеживание скачивания
             window.trackDownload = function() {
-                // Можно добавить счетчик скачиваний
                 console.log('Delta Client скачан');
                 
-                // Показываем сообщение через 1 секунду
                 setTimeout(() => {
                     alert('✅ Скачивание начато!\n\n' +
                           'Откроется страница Dropbox. Нажмите "Скачать" для загрузки файла.');
@@ -330,7 +305,6 @@
             };
         }
 
-        // Анимация появления
         function animateEntrance() {
             const container = document.querySelector('.container');
             
@@ -344,13 +318,11 @@
             }, 300);
         }
 
-        // Запуск при загрузке
         window.onload = function() {
             createParticles();
             setupButtons();
             animateEntrance();
             
-            // Автоматический фокус для мобильных
             if (window.innerWidth < 768) {
                 setTimeout(() => {
                     window.scrollTo({
@@ -360,7 +332,6 @@
                 }, 100);
             }
             
-            // Информация в консоль
             console.log('=== Delta Client Download Page ===');
             console.log('Версия: 2.4.1 | Minecraft: 1.16.5 Forge');
             console.log('Dropbox: https://www.dropbox.com/t/qWJdrnLEHKMZ3Ldp');
